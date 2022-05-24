@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1583977287 source:c:\users\walke\documents\projeto1\main.c
+	<math.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<locale.h>
+
+1583977287 source:c:\users\walke\documents\calculator imc\main.c
+	<math.h>
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<locale.h>
+

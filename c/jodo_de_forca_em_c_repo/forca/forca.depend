@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1587626398 source:/home/walker/forca/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	"forca.h"
+
+1587626213 /home/walker/forca/forca.h
+

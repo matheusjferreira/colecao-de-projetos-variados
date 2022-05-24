@@ -1,0 +1,11 @@
+Linux:
+
+Instale o pacote "open-cobol".
+
+Para compilar use o comando: cobc -x -O nome_do_arquivo.extensao
+
+Para executar use o comando: ./nomedo_do_arquivo
+
+Windows:
+
+Utilize a IDE "OpenCobolIDE".

@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1589856833 source:c:\users\walke\documents\git_hub_repo\cramer_x_y_em_c\cramer_x_y\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	"funcoes.h"
+
+1589852934 c:\users\walke\documents\git_hub_repo\cramer_x_y_em_c\cramer_x_y\funcoes.h
+

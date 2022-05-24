@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1589766028 source:c:\users\walke\documents\git_hub_repo\matriz_determinante_em_c_1x1_&_2x2\det_1x1_2x2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+

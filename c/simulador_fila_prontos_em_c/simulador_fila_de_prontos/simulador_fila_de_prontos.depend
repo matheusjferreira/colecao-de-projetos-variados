@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1587834450 source:c:\users\walke\documents\git_hub_repo\simulador_fila_prontos_em_c\simulador_fila_de_prontos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	"funcoes.h"
+
+1587832435 c:\users\walke\documents\git_hub_repo\simulador_fila_prontos_em_c\simulador_fila_de_prontos\funcoes.h
+

@@ -1,0 +1,207 @@
+float pontoFlutuante = 3.14f
+
+short valorPequeno = 32000;
+byte b = 127;
+
+double valor1 = 0.2;
+double valor2 = 0.1;
+double total = valor1 + valor2;
+
+System.out.println(total);
+
+public class TesteIR2 {
+
+    public static void main(String[] args) {
+
+        // De 1900.0 até 2800.0 o IR é de 7.5% e pode deduzir R$ 142
+        // De 2800.01 até 3751.0 o IR é de 15% e pode deduzir R$ 350
+        // De 3751.01 até 4664.00 o IR é de 22.5% e pode deduzir R$ 636
+
+        double salario = 3300.0;
+
+        if(salario >= 1900.0 && salario <= 2800.0) {
+            System.out.println("A sua aliquota é de 7%");
+            System.out.println("Você pode deduzir até R$ 142");
+        } else if(salario >= 2800.01 && salario <= 3751.0) {
+            System.out.println("A sua aliquota é de 15%");
+            System.out.println("Você pode deduzir até R$ 350");
+        } else if(salario >= 3751.01 && salario <= 4664.0) {
+            System.out.println("A sua aliquota é de 22.5%");
+            System.out.println("Você pode deduzir até R$ 636");
+        }
+    }
+}
+
+
+
+
+Para saber mais: o comando switch
+
+
+Vimos como fazer testes com o if, mas se precisarmos fazer vários testes? Um exemplo, temos uma variável mes, precisamos testar o seu número e imprimir o seu mês correspondente. Então, vamos fazer 12 ifs?
+
+Para esses casos, existe o comando switch, onde podemos colocar todas as opções ou rumos que o nosso programa pode tomar. Ele funciona da seguinte maneira:
+
+switch (variavelASerTestada) {
+    case opção1:
+            comando(s) caso a opção 1 tenha sido escolhida
+            break;
+    case opção2:
+            comando(s) caso a opção 2 tenha sido escolhida
+            break;
+    case opção3:
+            comando(s) caso a opção 3 tenha sido escolhida
+            break;
+    default:
+            comando(s) caso nenhuma das opções anteriores tenha sido escolhida
+}
+
+O código que será executado, que no nosso caso será a impressão do nome do mês, será o código em que a condição for verdadeira:
+
+public class TestaMes {
+
+    public static void main(String[] args) {
+
+        int mes = 10;
+
+        switch (mes) {
+            case 1:
+                System.out.println("O mês é Janeiro");
+                break;
+            case 2:
+                System.out.println("O mês é Fevereiro");
+                break;
+            case 3:
+                System.out.println("O mês é Março");
+                break;
+            case 4:
+                System.out.println("O mês é Abril");
+                break;
+            case 5:
+                System.out.println("O mês é Maio");
+                break;
+            case 6:
+                System.out.println("O mês é Junho");
+                break;
+            case 7:
+                System.out.println("O mês é Julho");
+                break;
+            case 8:
+                System.out.println("O mês é Agosto");
+                break;
+            case 9:
+                System.out.println("O mês é Setembro");
+                break;
+            case 10:
+                System.out.println("O mês é Outubro");
+                break;
+            case 11:
+                System.out.println("O mês é Novembro");
+                break;
+            case 12:
+                System.out.println("O mês é Dezembro");
+                break;
+            default:
+                System.out.println("Mês inválido");
+                break;
+        }
+    }
+}
+
+O break irá interromper a execução do caso que o contém, para os outros não serem executados, e se nenhuma condição for aceita, o código do default é que será executado. Por exemplo:
+
+public class TestaMes {
+
+    public static void main(String[] args) {
+
+        int mes = 13;
+
+        switch (mes) {
+            case 1:
+                System.out.println("O mês é Janeiro");
+                break;
+            case 2:
+                System.out.println("O mês é Fevereiro");
+                break;
+            case 3:
+                System.out.println("O mês é Março");
+                break;
+            case 4:
+                System.out.println("O mês é Abril");
+                break;
+            case 5:
+                System.out.println("O mês é Maio");
+                break;
+            case 6:
+                System.out.println("O mês é Junho");
+                break;
+            case 7:
+                System.out.println("O mês é Julho");
+                break;
+            case 8:
+                System.out.println("O mês é Agosto");
+                break;
+            case 9:
+                System.out.println("O mês é Setembro");
+                break;
+            case 10:
+                System.out.println("O mês é Outubro");
+                break;
+            case 11:
+                System.out.println("O mês é Novembro");
+                break;
+            case 12:
+                System.out.println("O mês é Dezembro");
+                break;
+            default:
+                System.out.println("Mês inválido");
+                break;
+        }
+    }
+}
+
+A impressão será Mês inválido. Então, o switch é uma solução para os ifs encadeados.
+
+
+
+Um erro de compilação...
+
+Clarice, amiga de Fernando, percebeu que ele está com dificuldade na implementação de um loop feito com while. Seu objetivo é imprimir no console os números de 1 a 10. No entanto, o código não compilava. Vejamos seu código:
+
+package projeto;
+
+public class Programa {
+
+    public static void main(String[] args) {
+
+        while (contador <= 10) {
+            int contador = 1;            
+            System.out.println(contador);
+            contador++;
+        }
+    }
+}
+
+Se você estivesse com Clarice agora, como explicaria o problema do código para ele? Depois de pensar em uma explicação, compare-a com a do instrutor a seguir.
+Opinião do instrutor
+
+Fernando sabiamente se preocupou em incrementar a variável contador a cada iteração do while para que o loop chegasse ao fim e não caísse em um loop infinito. Todavia, ele declarou a variável contador dentro do bloco do while. Por uma questão de escopo, essa variável só existirá dentro do bloco while. Para piorar as contas, a expressão contador <= 10 tenta acessar uma variável que ainda não foi declarada, razão principal do erro de compilação que esta enfrentado.
+
+Corrigindo o código temos:
+
+package projeto;
+
+public class Programa {
+
+    public static void main(String args[]) {
+
+        int contador = 1;        
+
+        while (contador <= 10) {        
+            System.out.println(contador);
+            contador++;
+        }
+    }
+}
+
+

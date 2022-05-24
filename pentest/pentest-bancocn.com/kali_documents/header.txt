@@ -1,0 +1,12 @@
+GET /cat.php?id=3 HTTP/1.1
+Host: www.bancocn.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: https://www.google.com/
+DNT: 1
+Connection: keep-alive
+Cookie: __cfduid=d759abd52957a5a94d2056bcfb3de2d731596726040; cf_clearance=af2d03d179e62563cb04ab879d2371818ec1bb0f-1596729648-0-1z10270d66z93705d82zb8ecb364-150; PHPSESSID=4tog4p00bqnmjjo3dbr6qm0hn5; cf_chl_1=fa8049a1f164538; cf_chl_prog=x19
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0

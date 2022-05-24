@@ -1,0 +1,12 @@
+void menu();
+void manipulacao();
+void criar_processo();
+void alterar_processo();
+void remover_processo();
+void tabela();
+void limpar();
+void escalonamento();
+void executar_um();
+void executar_tudo();
+void opcao();
+void copy();

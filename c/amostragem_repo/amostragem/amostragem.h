@@ -1,0 +1,13 @@
+void menu();
+void sistematica();
+void casual_ou_aleatoria_simples();
+void proporcial_estratificada();
+void verificarop();
+void verificarn();
+void verificarNi();
+void verificarNf();
+void verificarE();
+void verificarv();
+void verificarA();
+void verificarnN();
+void verificarEN();
